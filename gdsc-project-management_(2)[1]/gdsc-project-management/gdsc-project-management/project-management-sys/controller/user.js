@@ -38,7 +38,7 @@ exports.signup = async(req,res)=>{
 
      
     if( password !== confirmPassword){
-        return res.status(400).send('Passwords do not match');
+        return res.status(400).json({error: 'Passwords do not match'});
     }
     
     try{
@@ -94,7 +94,7 @@ exports.signup = async(req,res)=>{
             if (error) {
                 return res.status(500).json({ error: 'Email could not be sent' });
             }
-            res.status(200).send('Sign-up successful! Check your email for verification link.');
+            return res.status(200).json({message: 'Sign-up successful! Check your email for verification link.'});
         });
         //console.log("request recieved",req.body);
 
